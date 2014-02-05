@@ -1,0 +1,150 @@
+<html>
+<head>
+<meta http-equiv="refresh" content="7200" >
+<style media="screen" type="text/css">
+#left {
+  margin-left: 10px;
+  float: left;
+  width: 46% ;
+}
+#right {
+  
+  margin-left: 50%;
+}
+#header {
+	text-align: center;
+}
+#summary {
+    text-align: left;
+    margin-left: 40%;
+}
+</style>
+</head>
+<body>
+
+
+<div id="container">
+<div id="header"><table border="2" bordercolor="#000000" style="background-color:E1E1e1" width="1200" cellpadding="2" cellspacing="1">
+	<tr>
+	    <td>.Play</td>
+
+{% if days %}
+  {% for d in days %}
+    <td width="175"><center>{{ d }}</center></td>
+  {% endfor %}
+{% else %}
+"Nothing!"
+{% endif %}
+
+	</tr>
+	<tr>
+		<td>Weather</td>
+
+{% autoescape off %}
+
+{% if weather %}
+  {% for w in weather %}
+    <td width="175" bgcolor = "#FFFFFF"><center>{{ w.0 }}<br>{{ w.1 }}<br><b>{{ w.2 }}</b>&deg; | {{ w.3 }}&deg; | {{ w.4 }}</center></td>
+  {% endfor %}
+{% else %}
+"Nothing!"
+{% endif %}
+
+{% endautoescape %}
+        </tr>
+
+        <tr>
+                <td>DB</td>
+
+{% if windai %}
+  {% for w in windai %}
+    {% if "30" in w or "35" in w or "40" in w %}
+      <td width="175" bgcolor="#66FF66"><center>{{ w }}</center></td>
+    {% else %} {% if "25" in w %}
+      <td width="175" bgcolor="#FFFF33"><center>{{ w }}</center></td>
+    {% else %} {%if "20" in w or "15" in w %}
+      <td width="175" bgcolor="#FFFFAA"><center>{{ w }}</center></td>
+    {% else %}
+      <td width="175" bgcolor="#E4E4E4"><center>{{ w }}</center></td>
+    {% endif %}{% endif %}{% endif %}
+  {% endfor %}
+{% else %}
+"Nothing!"
+{% endif %}
+
+        </tr>
+
+        <tr>   
+                <td>Locust</td>
+
+{% if windns %}
+  {% for w in windns %}
+    {% if "30" in w or "35" in w or "40" in w %}
+      <td width="175" bgcolor="#66FF66"><center>{{ w }}</center></td>
+    {% else %} {% if "25" in w %}
+      <td width="175" bgcolor="#FFFF33"><center>{{ w }}</center></td>
+    {% else %} {%if "20" in w or "15" in w %}
+      <td width="175" bgcolor="#FFFFAA"><center>{{ w }}</center></td>
+    {% else %}
+      <td width="175" bgcolor="#E4E4E4"><center>{{ w }}</center></td>
+    {% endif %}{% endif %}{% endif %}
+  {% endfor %}
+{% else %}
+"Nothing!"
+{% endif %}
+
+        </tr>
+
+        <tr>   
+                <td>Coast</td>
+
+{% if windc %}
+  {% for w in windc %}
+    {% if "30" in w or "35" in w or "40" in w %}
+      <td width="175" bgcolor="#66FF66"><center>{{ w }}</center></td>
+    {% else %} {% if "25" in w %}
+      <td width="175" bgcolor="#FFFF33"><center>{{ w }}</center></td>
+    {% else %} {%if "20" in w or "15" in w %}
+      <td width="175" bgcolor="#FFFFAA"><center>{{ w }}</center></td>
+    {% else %}
+      <td width="175" bgcolor="#E4E4E4"><center>{{ w }}</center></td>
+    {% endif %}{% endif %}{% endif %}
+  {% endfor %}
+{% else %}
+"Nothing!"
+{% endif %}
+
+        </tr>
+
+        <tr>
+
+{% autoescape off %}
+{{stevens}}
+{% endautoescape %}
+
+        </tr>
+
+</table>
+<br>
+</div>
+</div>
+
+<table>
+
+<td>
+<iframe src="/traffic" width="250" height="300" marginheight="0px" marginwidth="0px"></iframe>
+</td>
+
+<td>
+<div style="position: absolute; overflow: hidden; left: 1000px; top: 450px; border: solid 2px #555; width:230px; height:500px;">
+<div style="overflow: hidden; margin-top: -50px; margin-left: -50px;">
+</div>
+<iframe src="http://home.comcast.net/~wxtofly/loopallbasic.html?param=tenmwind&region=PNW&grid=d2" scrolling="no" style="height: 900px; border: 0px none; width: 550px; margin-top: -350px; margin-left: -235px; ">
+</iframe>
+</div>
+</div>
+
+</td>
+</table>
+
+</body></html>
